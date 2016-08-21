@@ -1,0 +1,34 @@
+<nav class="white" role="navigation">
+  <div class="nav-wrapper container">
+    <a id="logo-container" href="home" class="brand-logo"><img src="img/logo_small.png"/>ragmatic Developers</a>
+    <ul class="right hide-on-med-and-down">
+      <li><a href="home">Home</a></li>
+      <li><a [routerLink]="['/posts']">Blog</a></li>
+      <li><a [routerLink]="['/login']" *ngIf="!isAuthenticated()">Login</a></li>
+      <li><a (click)="logout()" *ngIf="isAuthenticated()">Logout</a></li>
+
+      <!--<li><a href="#">Blog</a></li>-->
+    </ul>
+
+    <ul id="nav-mobile" class="side-nav">
+      <li><a href="home">Home</a></li>
+      <li><a [routerLink]="['/posts']">Blog</a></li>
+      <li><a [routerLink]="['/login']" *ngIf="!isAuthenticated()">Login</a></li>
+      <li><a (click)="logout()" [routerLink]="['/login']" *ngIf="isAuthenticated()">Logout</a></li>
+
+      <!--<li><a href="#">Blog</a></li>-->
+    </ul>
+    <a href="#" data-activates="nav-mobile" class="button-collapse"><i class="material-icons">menu</i></a>
+  </div>
+</nav>
+
+<div class="container">
+  <router-outlet></router-outlet>
+</div>
+
+
+<div class="fixed-action-btn" style="bottom: 60px; right: 24px;">
+  <a [routerLink]="['/newpost']" class="btn-floating btn-large red" routerLinkActive="disabled" *ngIf="isAuthenticated()">
+    <i class="material-icons">mode_edit</i>
+  </a>
+</div>

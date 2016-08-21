@@ -1,0 +1,25 @@
+<div class="row">
+  <div class="col s12">
+    <div class="card white posts" *ngFor="let post of posts | async">
+      <a [routerLink]="[post.encodedTitle]">
+        <article class="post card-content">
+          <header>
+            <h1 class="card-title"><strong>{{post.title}}</strong></h1>
+          </header>
+
+          <section class=summary [innerHTML]="post.summary"></section>
+
+          <content [innerHTML]="post.content"></content>
+        </article>
+        <div class="card-action">
+          <div class=chip *ngIf="post.author" >
+            <img src="{{post.author.pictureUrl}}" alt="Contact Person">
+            <span style="text-transform: capitalize">{{post.author.username}}</span>
+          </div>
+          &nbsp;
+          <a class=right href="#">Read more</a>
+        </div>
+      </a>
+    </div>
+  </div>
+</div>

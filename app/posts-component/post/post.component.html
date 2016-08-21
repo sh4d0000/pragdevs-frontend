@@ -1,0 +1,37 @@
+<div class="container">
+  <div class="section">
+    <div class="row">
+      <div class="col s12 ">
+        <div class="card white">
+          <form>
+            <article class="card-content post">
+              <title name="title" #title editable [innerHTML]="post.title"></title>
+
+              <section name="summary" #summary class=summary editable [innerHTML]="post.summary"></section>
+
+              <content name="content" #content editable [innerHTML]="post.content"></content>
+            </article>
+
+            <div class=card-action>
+              &nbsp;
+              <div class="chip" *ngIf="post.author">
+                <img src="{{post.author.pictureUrl}}" alt="Contact Person">
+                <span style="text-transform: capitalize">{{post.author.username}}</span>
+              </div>
+              <button (click)="submit()"  *ngIf="isEditingEnabled && isAuthenticated()"
+                      class="btn-flat waves-effect waves-light right"
+                      type=submit>Publish<i class="material-icons right">send</i>
+              </button>
+
+              <button (click)="enableEditing()" *ngIf="!isEditingEnabled && isAuthenticated()"
+                      class="btn-flat waves-effect waves-light right"
+                      type=button>Edit<i class="material-icons right">mode_edit</i>
+              </button>
+            </div>
+          </form>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
